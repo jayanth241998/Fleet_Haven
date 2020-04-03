@@ -1,0 +1,57 @@
+<h2 class="page-header">Register</h2>
+
+<br> {{#if success_msg}}
+<div class="alert alert-success">{{success_msg}}</div>
+{{/if}} {{#if error_msg}}
+<div class="alert alert-danger">{{error_msg}}</div>
+{{/if}}
+
+<div class="form-input">
+  <form method="post" action="/users/register">
+    <div class="form-group">
+      <label for="registerName">Name</label>
+      <input type="text" id="registerName" class="form-control" placeholder="Name" name="name"
+        pattern="^[A-Za-z]+[A-Za-z0-9_.- ]{1,30}"
+        title="Letters, numbers and symbols '_-.'. Up to 30 characters. Must begin with a letter."
+        required>
+    </div>
+    <div class="form-group">
+      <label for="registerUsername">Username</label>
+      <input type="text" id="registerUsername" class="form-control" placeholder="Username" name="username"
+        pattern="^[A-Za-z]+[A-Za-z0-9_.-]{1,30}"
+        title="Letters, numbers and symbols '_-.'. Up to 30 characters. Must begin with a letter."
+        required>
+    </div>
+    <div class="form-group">
+      <label for="registerEmail">Email</label>
+      <input type="email" id="registerEmail" class="form-control" placeholder="Email" name="email" required>
+    </div>
+    <div class="form-group">
+      <label for="registerPassword">Password</label>
+      <input id="registerPassword" type="password" class="form-control" placeholder="Password" name="password"
+        autocomplete="new-password" pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@!%*?&#^_-]).{8,30}"
+        title="8 to 30 characters, one uppercase, one lowercase, one number and one symbol: !?@#$%^&*_-"
+        required />
+    </div>
+    <div class="form-group">
+      <label>Confirm Password</label>
+      <input type="password" id="registerPassword2" class="form-control" placeholder="Password" name="password2"
+        autocomplete="off" pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@!%*?&#^_-]).{8,30}"
+        title="8 to 30 characters, one uppercase, one lowercase, one number and one symbol: !?@#$%^&*_-"
+        required>
+    </div>
+    <div id="registerMessage" style="display: none">
+      <h4>Password must use the following rules:</h4>
+      <p id="letter" class="invalid">At least one <b>lowercase</b> letter</p>
+      <p id="capital" class="invalid">At least one <b>capital (uppercase)</b> letter</p>
+      <p id="number" class="invalid">At least one <b>number</b></p>
+      <p id="symbol" class="invalid">At least one <b>symbol ($@!%*?&#^_-)</b></p>
+      <p id="length" class="invalid">Between <b>8 to 30 characters</b></p>
+      <p id="passwordsNoMatch" class="invalid">Passwords <b>should match</b></p>
+    </div>
+    {{!-- <input type="hidden" name="_csrf" value="{{csrfToken}}"> --}}
+    <button id="registerSubmitButton" type="submit" class="btn btn-primary">Register</button>
+  </form>
+  <br>
+  <br>
+</div>

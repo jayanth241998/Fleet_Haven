@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Fleet Management System</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {{!-- <meta name="description" content="Bachelor's Thesis Application">
+    <meta name="keywords" content="Fleet,Vehicles,Drivers,GPS,Arduino,Heroku">
+    <meta name="author" content="Andrei Ulinici"> --}}
+    <link rel="icon" type="image/png" href="/images/favicon.png">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/bootstrap-datetimepicker.min.css">
+    <link rel="stylesheet" href="/css/select2.min.css">
+    <link rel="stylesheet" href="/css/password.min.css">
+    <link rel="stylesheet" href="/css/main.css">
+
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>-->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/select2.min.js"></script>
+    <script src="/js/moment.min.js"></script>
+    <script src="/js/bootstrap-datetimepicker.min.js"></script>
+    <script src="/js/password.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/driversPage.js"></script>
+    {{!-- <script src="/js/vehiclesPage.js"></script> --}}
+    <script src="/js/reportsPage.js"></script>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAqr8loxFD0RAKeSkpYD98R_oQDOiVSnYE"
+    ></script>
+
+    {{!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js"></script> --}}
+    <script src="/js/script.js"></script>
+    <script src="/js/v3_epoly.js"></script>
+
+    {{!-- Dashboard --}}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Le styles -->
+
+
+</head>
+
+<body>
+    <!--[if lt IE 10]>
+            <p data-locale-string="outdated">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+            <![endif]-->
+    <div class="nav-side-menu">
+        <div class="brand">Fleet Management</div>
+        <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
+        <div class="menu-list">
+            <ul id="menu-content" class="menu-content collapse out">
+
+                {{#if user}}
+                <ul id="userWelcome">Welcome, {{user.name}}!</ul>
+               <ul>
+                    <a href="/">
+                        <li id="homePageHeader">
+                            <i class="fa fa-dashboard fa-lg"></i> Dashboard
+                        </li>
+                    </a>
+                </ul>
+
+                <li data-toggle="collapse" data-target="#driversMenu" class="collapsed" id="driversTab">
+                    <a><i class="fa fa-users fa-lg"></i> Drivers <span class="arrow"></span></a>
+                </li>
+                <ul class="sub-menu collapse" id="driversMenu">
+                    <a href="/drivers">
+                        <li id="driversPageHeader">View all drivers</li>
+                    </a>
+                    <a href="/drivers/create">
+                        <li id="addDriverHeader">Add driver</li>
+                    </a>
+                </ul>
+
+                <li data-toggle="collapse" data-target="#vehiclesMenu" class="collapsed" id="vehiclesTab">
+                    <a><i class="fa fa-car fa-lg"></i> Vehicles <span class="arrow"></span></a>
+                </li>
+                <ul class="sub-menu collapse" id="vehiclesMenu">
+                    <a href="/vehicles">
+                        <li id="vehiclesPageHeader">View all vehicles</li>
+                    </a>
+                    <a href="/vehicles/trips">
+                        <li id="allTripsHeader">View all trips</li>
+                    </a>
+                    <a href="/vehicles/create">
+                        <li id="addVehicleHeader">Add vehicle</li>
+                    </a>
+                    <a href="/vehicles/trips/create">
+                        <li id="addTripHeader">Add trip</li>
+                    </a>
+                </ul>
+
+                {{!-- <li data-toggle="collapse" data-target="#reportsMenu" class="collapsed" id="reportsTab">
+                    <a><i class="fa fa-globe fa-lg"></i> Reports <span class="arrow"></span></a>
+                </li> --}}
+                {{!-- <ul class="sub-menu collapse" id="reportsMenu">
+                    <a href="/reports">
+                        <li id="reportsPageHeader">View reports</li>
+                    </a>
+                </ul>
+                <ul>
+                    <a href="/contact">
+                        <li id="contact">
+                            <i class="fa fa-paper-plane"></i></i> Contact us
+                        </li>
+                    </a>
+                </ul>
+                <ul> --}}
+                    <a href="/users/logout">
+                        <li id="logout">
+                            <i class="fa fa-sign-out fa-lg"></i> Log out
+                        </li>
+                    </a>
+                </ul>
+
+                {{else}}
+                <ul>
+                    <a href="/users/login">
+                        <li id="login">
+                            <i class="fa fa-sign-in fa-lg"></i> Login
+                        </li>
+                    </a>
+                </ul>
+                <ul>
+                    <a href="/users/register">
+                        <li id="register">
+                            <i class="fa fa-id-card-o fa-lg"></i> Register
+                        </li>
+                    </a>
+                </ul>
+                {{/if}}
+            </ul>
+        </div>
+    </div>
+    <div class="container-fluid">
+
+        {{{body}}}
+
+    </div>
+
+      <div id="myModalpop" class="modalpop">
+
+  <!-- Modal content -->
+  <div class="modal-contentpop">
+    <div class="modal-headerpop">
+      <span class="closep">&times;</span>
+      <h2>Trip completed</h2>
+    </div>
+    <div class="modal-bodypop">
+      <p>The assigned task is completed. vehicle has reached its destination</p>
+    
+    </div>
+    <div class="modal-footerpop">
+      <h3></h3>
+    </div>
+  </div>
+
+   </div>
+
+
+</body>
+
+</html>

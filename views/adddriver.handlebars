@@ -1,0 +1,126 @@
+<div id="addDriverPage">
+    <h2>Add driver</h2>
+    <p>Here you can add a new driver.</p>
+
+    <br> {{#if success_msg}}
+    <div class="alert alert-success">{{success_msg}}</div>
+    {{/if}} {{#if error_msg}}
+    <div class="alert alert-danger">{{error_msg}}</div>
+    {{/if}}
+
+    <script type="text/javascript">
+        $(function () {
+            var categoryIndex = 2;
+            $('.datetimepicker').datetimepicker({
+                format: 'LL',
+                useCurrent: true
+            });
+            $('#addCategory').click(function () {
+                var newLicenseHtml = '<div class="form-group"><label class="col-md-2 control-label">License category</label>' +
+                    '<div class="col-md-4"><select class="form-control" name="category' + categoryIndex + '" required>' +
+                    '<optgroup label="Light rigid "><option>(LR)</option>' +
+                    '<optgroup label="Medium rigid "><option>(MR)</option></optgroup>' +
+                    '<optgroup label="Heavy rigid "><option>(HR)</option></optgroup>' +
+                    '<optgroup label="Heavy combination "><option>(HC)</option></optgroup>' +
+                    '<optgroup label="Multi combination "><option>(MC)</option></optgroup>' +
+                    '</select></div></div><div class="form-group"><label class="col-md-2 control-label">Category expiry date</label>' +
+                    '<div class="col-md-4"><input type="text" class="form-control datetimepicker" placeholder="Click to select" name="expiryDate' + 
+                    categoryIndex + '" required></div></div>';
+                categoryIndex++;
+                $("#licenseCategories").append(newLicenseHtml);
+                $('.datetimepicker').datetimepicker({
+                    format: 'LL',
+                    useCurrent: true
+                });                
+            });
+        });
+    </script>
+
+    <form action="/drivers/create" method="post" class="form-horizontal" id="addDriverForm">
+        <div class="form-group">
+            <label class="col-md-2 control-label">First name</label>
+            <div class="col-md-4">
+                <input type="text" class="form-control" placeholder="First name" name="firstName" required
+                autocomplete="given-name">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-2 control-label">Last name</label>
+            <div class="col-md-4">
+                <input type="text" class="form-control" placeholder="Last name" name="lastName" required
+                autocomplete="family-name">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-2 control-label">National ID</label>
+            <div class="col-md-4">
+                <input type="text" class="form-control" placeholder="CNP (13 figures)" pattern="[0-9]{13}" maxlength="13" name="nationalId"
+                    required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-2 control-label">Address</label>
+            <div class="col-md-4">
+                <input type="text" class="form-control" placeholder="Street, City" name="address" required
+                autocomplete="address-line1">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-2 control-label">Email</label>
+            <div class="col-md-4">
+                <input type="email" class="form-control" placeholder="Email" name="email" required
+                autocomplete="email">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-2 control-label">Phone number</label>
+            <div class="col-md-4">
+                <input type="text" class="form-control" placeholder="E.g. 0732166222" name="phoneNumber" required
+                autocomplete="tel-national">
+            </div>
+        </div>
+        <div id="licenseCategories">
+            <div class="form-group">
+                <label class="col-md-2 control-label">License category</label>
+                <div class="col-md-4">
+                    <select class="form-control" name="category1" required>
+                    <optgroup label="Light rigid ">
+                      <option>LR</option>
+                    </optgroup>
+                    <optgroup label="Medium rigid">
+                        <option>MR</option> 
+                    </optgroup>
+                    <optgroup label="Heavy rigid">
+                        <option>HR</option> 
+                    </optgroup>
+                    <optgroup label="Heavy combination">
+                        <option>HC</option> 
+                    </optgroup>
+                    <optgroup label="Multi combination">
+                        <option>MC</option> 
+                    
+                    </optgroup>
+                </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label">Category expiry date</label>
+                <div class="col-md-4">
+                    <input type='text' class="form-control datetimepicker" placeholder="Click to select" name="expiryDate1" required>
+                </div>
+            </div>
+        </div>
+        <div class="form-group" align="center">
+            <div class="col-md-11">
+                <button type="button" class="btn" id="addCategory">Add category</button>
+            </div>
+        </div>
+        <br>
+        <div class="form-group" align="center">
+            <div class="col-md-6">
+                <button type="submit" class="btn btn-success" id="addDriverButton">Submit</button>
+            </div>
+        </div>
+    </form>
+    <br>
+</div>

@@ -1,0 +1,95 @@
+<div id="viewVehicleTripsPage">
+    <h2>Vehicle Trips Page</h2>
+    <p>Here you can view the trips of the vehicle
+        <b>{{items.manufacturer}} {{items.model}}</b> with the registration plate
+        <b>{{ items.registrationPlate }}</b>
+    </p>
+
+    <br> {{#if success_msg}}
+    <div class="alert alert-success">{{success_msg}}</div>
+    {{/if}} {{#if error_msg}}
+    <div class="alert alert-danger">{{error_msg}}</div>
+    {{/if}}
+
+    <div>
+        <h3 title="Live trip" style="float:left">View live trip:
+            <a href="/live/id/{{items._id}}">
+                <button class="btn btn-success btn-lg" data-toggle="modal" data-title="Live trip">
+                    <span class="glyphicon glyphicon-map-marker"></span>
+                </button>
+            </a>
+        </h3>
+
+        <div class="card-inner">
+            <span>info</span>
+            <h4>{{ items.manufacturer }} {{ items.model }}</h4>
+            <p><b>RCA:</b> {{ items.rca }}</p>
+            <p><b>ITP:</b> {{ items.itp }}</p>
+            <p><b>Vignette:</b> {{ items.rovinieta }}</p>
+        </div>
+    </div>
+    <br>
+
+
+
+    <table class="table table-condensed table-striped" id="tripsTable">
+        <thead class="table-header">
+            <tr>
+                <th>#</th>
+                <th>Driver</th>
+                <th>Start date</th>
+                <th>Stop date</th>
+                <th>Start location</th>
+                <th>Stop location</th>
+                <th>Trip distance</th>
+                <th>Trips</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each items.trips}}
+            <tr>
+                <td data-label="#"><b>{{inc @index}}</b></td>
+                <td data-label="Driver">{{ this.driver.firstName }} {{ this.driver.lastName }}</td>
+                <td data-label="Start date">{{ this.startDate }}</td>
+                <td data-label="Stop date">{{ this.stopDate }}</td>
+                <td data-label="Start location" onclick="showLocation(this.innerHTML)" onmouseover=""
+                    style="cursor: pointer;">
+                    {{ this.startLocation.lat }}, {{ this.startLocation.long }}
+                </td>
+                <td data-label="Stop location" onclick="showLocation(this.innerHTML)" onmouseover=""
+                    style="cursor: pointer;">
+                    {{ this.stopLocation.lat }}, {{ this.stopLocation.long }}
+                </td>
+                <td data-label="Trip distance (km)">{{ this.distance }}</td>
+                <td data-label="Trips">
+                    <p class="operations" title="View trip">
+                        <button class="btn btn-success btn-md" data-toggle="modal" data-title="View trip"
+                            onclick="initMap('{{ this.tripId }}')">
+                            <span class="glyphicon glyphicon-road"></span>
+                        </button>
+                    </p>
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+
+    <div class="modal" id="viewTripModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span class="glyphicon glyphicon-remove"></span></button>
+                    <h4 class="modal-title custom_align" id="Heading">Vehicle Trip</h4>
+                </div>
+                <div class="modal-body">
+                    <div id="mapCanvas"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success center-block" data-dismiss="modal"
+                        align="center"><span></span>Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,23 @@
+<h2 class="page-header">Get social with us! 💭📧 </h2>
+
+<br> {{#if success_msg}}
+<div class="alert alert-success">{{success_msg}}</div>
+{{/if}} {{#if error_msg}}
+<div class="alert alert-danger">{{error_msg}}</div>
+{{/if}}
+
+<div class="form-input">
+	<form method="post" action="/contact" autocomplete="off">
+		<div class="form-group">
+			<label for="contactSubject">Subject</label>
+			<input type="text" class="form-control" name="contactSubject" placeholder="Subject" maxlength="50"
+				title="Brief description of the message" autofocus required />
+		</div>
+		<div class="form-group">
+			<label for="contactMessage">Your message:</label>
+			<textarea name="contactMessage" placeholder="Surprise us 🙂" rows="8" cols="50" maxlength="150"
+				required></textarea>
+		</div>
+		<button id="contactSubmitButton" type="submit" class="btn btn-primary">Send it</button>
+	</form>
+</div>

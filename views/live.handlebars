@@ -1,0 +1,164 @@
+<div>
+    <h2>View live trip</h2>
+    <p>Here you can track live the vehicle <b>{{items.manufacturer}} {{items.model}}</b> 
+    with the registration plate <b>{{ items.registrationPlate }}</b>
+    </p>
+
+    <br /> {{#if success_msg}}
+    <div class="alert alert-success">{{success_msg}}</div>
+    {{/if}} {{#if error_msg}}
+    <div class="alert alert-danger">{{error_msg}}</div>
+    {{/if}}
+
+    <script type="text/javascript">
+        var liveMap;
+        function initLiveTrip() {
+            var liveTrip = {{{json items.live}}};
+            var points = [];
+            var bounds = new google.maps.LatLngBounds();
+            var mapOptions = {
+                zoom: 11,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+            liveMap = new google.maps.Map(document.getElementById("liveMapCanvas"), mapOptions);
+            var infowindow = new google.maps.InfoWindow({});
+            var iconsetngs = {
+                path: google.maps.SymbolPath.FORWARD_CLOSED_ARROW
+            };
+            for (i = 0; i < liveTrip.length; i++) {
+                var d = new Date(liveTrip[i].date);
+	            var date = d.toLocaleString();
+                {{!--var position1 = new google.maps.LatLng(liveTrip[i].lat, liveTrip[i].long);--}}
+                var lat = parseFloat(liveTrip[i].lat);
+                var long = parseFloat(liveTrip[i].long);
+                var position = { lat: lat, lng: long};
+                var speed = liveTrip[i].speed;
+                var contentString = "<div>" + "Date: " + date + "<br>Coordinates: " + 
+                    position.lat + ", " + position.lng + "<br>Speed: " + 
+                    speed + " km/h" + "</div>";
+                var marker = new google.maps.Marker({
+                    position: position,
+                    map: liveMap,
+                    title: String(position.lat + ", " + position.lng),
+                    contentString: contentString
+                });
+                marker.addListener('click', function() {
+                    infowindow.setContent(this.contentString);
+                    infowindow.open(liveMap, this);
+                    liveMap.setCenter(this.getPosition());
+                });                
+                // for Poly
+                points.push(position);
+                bounds.extend(position);
+            }
+            var poly = new google.maps.Polyline({
+                path: points,
+                strokeColor: "#FF0000",
+                strokeOpacity: .3,
+                strokeWeight: 2,
+                icons: [{
+                    icon: iconsetngs,
+                    repeat:'35px',
+                    offset: '100%'}]
+            });
+            poly.setMap(liveMap);
+            liveMap.fitBounds(bounds);
+
+            marker.setAnimation(google.maps.Animation.BOUNCE);
+
+            google.maps.event.addDomListener(window, 'load', initLiveTrip);
+            google.maps.event.addDomListener(window, "resize", function () {
+                var center = liveMap.getCenter();
+                google.maps.event.trigger(liveMap, "resize");
+                liveMap.setCenter(center);
+            });
+        }
+        $(document).ready(function () {
+            initLiveTrip();
+            (function () {
+                if (document.cookie == "checked") {
+                    $("#checkboxButton").prop("checked", true);
+                    refresh("checked");
+                }
+                $("#checkboxButton").change(function () {
+                    var checked = $("input[name='refresh']").is(':checked');
+                    if (checked == true) {
+                        if (document.cookie == "unchecked" || document.cookie == "") {
+                            document.cookie = "checked";
+                            refresh();
+                        } else {
+                            refresh();
+                        }
+                    }
+                    else {
+                        document.cookie = "unchecked";
+                    }
+                });
+            })();
+        });
+        function refresh() {
+            setTimeout(function () {
+                location = '';
+            }, 10000);
+        }
+    </script>
+
+    <div class="col-md-8">
+        {{!--<button onclick='location.reload()'>Refresh</button>--}}
+        <p>Refresh every 10 seconds: <input type="checkbox" 
+        title="Check to refresh page every 10 seconds" name="refresh" id="checkboxButton">
+        </p>
+        <br /><b> SIM808 GPS position </b><br /><br />
+        <div id="liveMapCanvas" style="width=500px"></div><br />
+    </div>
+
+    <div class="col-md-8">
+        <table class="table table-condensed table-striped" id="tripsTable">
+            <thead class="table-header">
+                <tr>
+                    <th>#</th>
+                    <th>Date</th>
+                    <th>Coordinates (lat, long)</th>
+                    <th>Speed (km/h)</th>
+                    <th>Altitude (m)</th>
+                    <th>Heading</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{reverse items.live}}
+                {{#each items.live}}
+                <tr>
+                    <td data-label="#"><b>{{inc @index}}</b></td>
+                    <td data-label="Date">{{ this.date }}</td>
+                    <td data-label="Coordinates" onclick="showLocation(this.innerHTML)" 
+                    onmouseover="" style="cursor: pointer;">
+                        {{ this.lat }}, {{ this.long }}
+                    </td>
+                    <td data-label="Speed">{{ this.speed }}</td>
+                    <td data-label="Altitude (m)">{{ this.altitude }}</td>
+                    <td data-label="Heading">{{this.heading}}</td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div><br /><br />
+
+    <div class="modal" id="viewTripModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span class="glyphicon glyphicon-remove"></span></button>
+                    <h4 class="modal-title custom_align" id="Heading">Vehicle location</h4>
+                </div>
+                <div class="modal-body">
+                    <div id="mapCanvas"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success center-block" 
+                    data-dismiss="modal" align="center"><span></span>Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

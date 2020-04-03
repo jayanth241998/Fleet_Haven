@@ -1,0 +1,508 @@
+html,
+body {
+    margin: 0px;
+    padding: 0px;
+    height: 100%;
+    font-family: verdana;
+}
+
+.modalpop {
+    display: none; /* Hidden by default */
+    position: absolute; /* Stay in place */
+    z-index : 1240 !important;
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    
+  }
+  
+  /* Modal Content */
+  .modal-contentpop {
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 0;
+    border: 1px solid #888;
+    width: 80%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s;
+    border-radius: 5px;
+    font-family: 'Lora', serif;
+    font-weight: bold;
+    
+  }
+  
+  /* Add Animation */
+  @-webkit-keyframes animatetop {
+    from {top:-300px; opacity:0} 
+    to {top:0; opacity:1}
+  }
+  
+  @keyframes animatetop {
+    from {top:-300px; opacity:0}
+    to {top:0; opacity:1}
+  }
+  
+  /* The Close Button */
+  .close {
+    color: white;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  .modal-headerpop {
+    padding: 2px 16px;
+    background-color: #5cb85c;
+    color: white;
+  }
+  
+  .modal-bodypop {padding: 2px 16px;
+  font-size: 17px;}
+  
+  .modal-footerpop {
+    padding: 2px 16px;
+    background-color: #5cb85c;
+    color: white;
+  }
+
+#speed{
+    
+    font-family: 'Lora', serif;
+    font-weight: bold;
+}
+
+#distancerem{
+    
+    font-family: 'Lora', serif;
+    font-weight: bold;
+}
+
+#eta{
+    
+    font-family: 'Lora', serif;
+    font-weight: bold;
+    
+}
+
+
+/* Register Page */
+
+/* The message box is shown when the user clicks on the password field */
+#registerMessage {
+    display: none;
+    border-radius: 10px;
+    background: #f1f1f1;
+    position: relative;
+    padding: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+#registerMessage p {
+    margin-left: 5px;
+    font-size: 12px;
+}
+
+/* Add a green text color and a checkmark when the requirements are right */
+.valid {
+    color: green;
+}
+
+.valid:before {
+    position: relative;
+    left: -5px;
+    content: "\2714";
+}
+
+/* Add a red text color and an "x" icon when the requirements are wrong */
+.invalid {
+    color: red;
+}
+
+.invalid:before {
+    position: relative;
+    left: -5px;
+    content: "\2716";
+}
+
+/* End of Register page */
+
+/* Login page */
+
+.form-input {
+    width: 380px;
+}
+
+.forgot-password-button {
+    float: right;
+}
+
+/* End of Login page */
+
+
+#userWelcome {
+    font-size: 13px;
+    margin-left: 15px;
+    color: #d19b3d;
+}
+
+.nav-side-menu {
+    font-size: 14px;
+    font-weight: 200;
+    background-color: #2e353d;
+    position: fixed;
+    top: 0px;
+    color: #e1ffff;
+}
+
+.nav-side-menu .brand {
+    background-color: #23282e;
+    line-height: 50px;
+    display: block;
+    text-align: center;
+    font-size: 16px;
+}
+
+.nav-side-menu .toggle-btn {
+    display: none;
+}
+
+.nav-side-menu ul,
+.nav-side-menu li {
+    list-style: none;
+    padding: 0px;
+    margin: 0px;
+    line-height: 35px;
+    cursor: pointer;
+}
+
+.nav-side-menu ul :not(collapsed) .arrow:before,
+.nav-side-menu li :not(collapsed) .arrow:before {
+    font-family: FontAwesome;
+    content: "\f078";
+    display: inline-block;
+    padding-left: 10px;
+    padding-right: 10px;
+    vertical-align: middle;
+    float: right;
+}
+
+.nav-side-menu ul .active,
+.nav-side-menu li .active {
+    border-left: 3px solid #d19b3d;
+    background-color: #4f5b69;
+}
+
+.nav-side-menu ul .sub-menu li.active,
+.nav-side-menu li .sub-menu li.active {
+    color: #d19b3d;
+}
+
+.nav-side-menu ul .sub-menu li.active a,
+.nav-side-menu li .sub-menu li.active a {
+    color: #d19b3d;
+}
+
+.nav-side-menu ul .sub-menu li,
+.nav-side-menu li .sub-menu li {
+    background-color: #181c20;
+    border: none;
+    line-height: 28px;
+    border-bottom: 1px solid #23282e;
+    margin-left: 0px;
+}
+
+.nav-side-menu ul .sub-menu li:hover,
+.nav-side-menu li .sub-menu li:hover {
+    background-color: #020203;
+}
+
+.nav-side-menu ul .sub-menu li:before,
+.nav-side-menu li .sub-menu li:before {
+    font-family: FontAwesome;
+    content: "\f105";
+    display: inline-block;
+    padding-left: 10px;
+    padding-right: 10px;
+    vertical-align: middle;
+}
+
+.nav-side-menu li {
+    padding-left: 0px;
+    border-left: 3px solid #2e353d;
+    border-bottom: 1px solid #23282e;
+}
+
+.nav-side-menu li a,
+.nav-side-menu ul a {
+    text-decoration: none;
+    color: #e1ffff;
+}
+
+.nav-side-menu li a i,
+.nav-side-menu ul a li i {
+    padding-left: 10px;
+    width: 20px;
+    padding-right: 20px;
+}
+
+.nav-side-menu li:hover {
+    border-left: 3px solid #d19b3d;
+    background-color: #4f5b69;
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    -ms-transition: all 1s ease;
+    transition: all 1s ease;
+}
+
+.container-fluid {
+    height: 100%;
+}
+
+.operations {
+    margin: 0;
+}
+
+@media only screen and (max-width: 768px) {
+    .nav-side-menu {
+        position: relative;
+        width: 100%;
+        /*margin-bottom: 10px;*/
+    }
+
+    .nav-side-menu .toggle-btn {
+        display: block;
+        cursor: pointer;
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        z-index: 10 !important;
+        padding: 3px;
+        background-color: #ffffff;
+        color: #000;
+        width: 40px;
+        text-align: center;
+    }
+
+    .brand {
+        text-align: left !important;
+        font-size: 22px;
+        padding-left: 20px;
+        line-height: 50px !important;
+    }
+
+    table#driversTable,
+    table#vehiclesTable,
+    table#tripsTable {
+        border: 0;
+    }
+
+    table#driversTable thead,
+    table#vehiclesTable thead,
+    table#tripsTable thead {
+        display: none;
+    }
+
+    table#driversTable tr,
+    table#vehiclesTable tr,
+    table#tripsTable tr {
+        margin-bottom: 25px;
+        display: block;
+
+        border-bottom: 2px solid #d19b3d;
+    }
+
+    table#driversTable td,
+    table#vehiclesTable td,
+    table#tripsTable td {
+        display: block;
+        text-align: right;
+        font-size: 14px;
+    }
+
+    table#driversTable td:before,
+    table#vehiclesTable td:before,
+    table#tripsTable td:before {
+        content: attr(data-label);
+        float: left;
+        /*text-transform: uppercase;*/
+        font-weight: bold;
+    }
+
+    #homePage {
+        background-image: url(../images/FleetManagementCloud.jpg);
+        height: 100%;
+        margin-left: -15px;
+        margin-right: -15px;
+        margin-bottom: -20px;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    .form-input {
+        width: 100%;
+    }
+}
+
+@media only screen and (min-width: 769px) {
+    .nav-side-menu {
+        height: 100%;
+        width: 200px;
+    }
+
+    .nav-side-menu .menu-list .menu-content {
+        display: block;
+    }
+
+    .container-fluid {
+        margin-left: 200px;
+    }
+
+    table {
+        border: 1px solid #ccc;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        border-collapse: collapse;
+        border-spacing: 0;
+    }
+
+    table tr {
+        margin-bottom: 5px;
+        border: 1px solid #ddd;
+        padding: 5px;
+    }
+
+    table th,
+    table td {
+        padding: 15px;
+        text-align: center;
+    }
+
+    table th {
+        font-size: 14px;
+        letter-spacing: 1px;
+    }
+
+    #homePage {
+        height: 100%;
+        margin-left: -15px;
+        margin-right: -15px;
+        margin-bottom: -20px;
+        /* background-image: url(../images/FMSBackground.jpg);
+        background-position: 50% 30%;
+        background-repeat: no-repeat;
+        background-size: cover; */
+        background: repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.11) 0px, rgba(0, 0, 0, 0.11) 12px, rgba(1, 1, 1, 0.16) 12px, rgba(1, 1, 1, 0.16) 24px, rgba(0, 0, 0, 0.14) 24px, rgba(0, 0, 0, 0.14) 36px, rgba(0, 0, 0, 0.23) 36px, rgba(0, 0, 0, 0.23) 48px, rgba(0, 0, 0, 0.12) 48px, rgba(0, 0, 0, 0.12) 60px, rgba(1, 1, 1, 0.07) 60px, rgba(1, 1, 1, 0.07) 72px, rgba(0, 0, 0, 0.21) 72px, rgba(0, 0, 0, 0.21) 84px, rgba(0, 0, 0, 0.24) 84px, rgba(0, 0, 0, 0.24) 96px, rgba(1, 1, 1, 0.23) 96px, rgba(1, 1, 1, 0.23) 108px, rgba(1, 1, 1, 0.07) 108px, rgba(1, 1, 1, 0.07) 120px, rgba(0, 0, 0, 0.01) 120px, rgba(0, 0, 0, 0.01) 132px, rgba(1, 1, 1, 0.22) 132px, rgba(1, 1, 1, 0.22) 144px, rgba(1, 1, 1, 0.24) 144px, rgba(1, 1, 1, 0.24) 156px, rgba(0, 0, 0, 0) 156px, rgba(0, 0, 0, 0) 168px, rgba(0, 0, 0, 0.12) 168px, rgba(0, 0, 0, 0.12) 180px), repeating-linear-gradient(90deg, rgba(1, 1, 1, 0.01) 0px, rgba(1, 1, 1, 0.01) 12px, rgba(1, 1, 1, 0.15) 12px, rgba(1, 1, 1, 0.15) 24px, rgba(0, 0, 0, 0.09) 24px, rgba(0, 0, 0, 0.09) 36px, rgba(0, 0, 0, 0.02) 36px, rgba(0, 0, 0, 0.02) 48px, rgba(0, 0, 0, 0.1) 48px, rgba(0, 0, 0, 0.1) 60px, rgba(1, 1, 1, 0.07) 60px, rgba(1, 1, 1, 0.07) 72px, rgba(1, 1, 1, 0.15) 72px, rgba(1, 1, 1, 0.15) 84px, rgba(0, 0, 0, 0.18) 84px, rgba(0, 0, 0, 0.18) 96px, rgba(1, 1, 1, 0.15) 96px, rgba(1, 1, 1, 0.15) 108px, rgba(1, 1, 1, 0.09) 108px, rgba(1, 1, 1, 0.09) 120px, rgba(1, 1, 1, 0.07) 120px, rgba(1, 1, 1, 0.07) 132px, rgba(1, 1, 1, 0.05) 132px, rgba(1, 1, 1, 0.05) 144px, rgba(0, 0, 0, 0.1) 144px, rgba(0, 0, 0, 0.1) 156px, rgba(1, 1, 1, 0.18) 156px, rgba(1, 1, 1, 0.18) 168px), repeating-linear-gradient(45deg, rgba(0, 0, 0, 0.24) 0px, rgba(0, 0, 0, 0.24) 16px, rgba(1, 1, 1, 0.06) 16px, rgba(1, 1, 1, 0.06) 32px, rgba(0, 0, 0, 0.16) 32px, rgba(0, 0, 0, 0.16) 48px, rgba(1, 1, 1, 0) 48px, rgba(1, 1, 1, 0) 64px, rgba(1, 1, 1, 0.12) 64px, rgba(1, 1, 1, 0.12) 80px, rgba(1, 1, 1, 0.22) 80px, rgba(1, 1, 1, 0.22) 96px, rgba(0, 0, 0, 0.24) 96px, rgba(0, 0, 0, 0.24) 112px, rgba(0, 0, 0, 0.25) 112px, rgba(0, 0, 0, 0.25) 128px, rgba(1, 1, 1, 0.12) 128px, rgba(1, 1, 1, 0.12) 144px, rgba(0, 0, 0, 0.18) 144px, rgba(0, 0, 0, 0.18) 160px, rgba(1, 1, 1, 0.03) 160px, rgba(1, 1, 1, 0.03) 176px, rgba(1, 1, 1, 0.1) 176px, rgba(1, 1, 1, 0.1) 192px), repeating-linear-gradient(135deg, rgba(1, 1, 1, 0.18) 0px, rgba(1, 1, 1, 0.18) 3px, rgba(0, 0, 0, 0.09) 3px, rgba(0, 0, 0, 0.09) 6px, rgba(0, 0, 0, 0.08) 6px, rgba(0, 0, 0, 0.08) 9px, rgba(1, 1, 1, 0.05) 9px, rgba(1, 1, 1, 0.05) 12px, rgba(0, 0, 0, 0.01) 12px, rgba(0, 0, 0, 0.01) 15px, rgba(1, 1, 1, 0.12) 15px, rgba(1, 1, 1, 0.12) 18px, rgba(0, 0, 0, 0.05) 18px, rgba(0, 0, 0, 0.05) 21px, rgba(1, 1, 1, 0.16) 21px, rgba(1, 1, 1, 0.16) 24px, rgba(1, 1, 1, 0.07) 24px, rgba(1, 1, 1, 0.07) 27px, rgba(1, 1, 1, 0.23) 27px, rgba(1, 1, 1, 0.23) 30px, rgba(0, 0, 0, 0.2) 30px, rgba(0, 0, 0, 0.2) 33px, rgba(0, 0, 0, 0.18) 33px, rgba(0, 0, 0, 0.18) 36px, rgba(1, 1, 1, 0.12) 36px, rgba(1, 1, 1, 0.12) 39px, rgba(1, 1, 1, 0.13) 39px, rgba(1, 1, 1, 0.13) 42px, rgba(1, 1, 1, 0.2) 42px, rgba(1, 1, 1, 0.2) 45px, rgba(1, 1, 1, 0.18) 45px, rgba(1, 1, 1, 0.18) 48px, rgba(0, 0, 0, 0.2) 48px, rgba(0, 0, 0, 0.2) 51px, rgba(1, 1, 1, 0) 51px, rgba(1, 1, 1, 0) 54px, rgba(0, 0, 0, 0.03) 54px, rgba(0, 0, 0, 0.03) 57px, rgba(1, 1, 1, 0.06) 57px, rgba(1, 1, 1, 0.06) 60px, rgba(1, 1, 1, 0) 60px, rgba(1, 1, 1, 0) 63px, rgba(0, 0, 0, 0.1) 63px, rgba(0, 0, 0, 0.1) 66px, rgba(1, 1, 1, 0.19) 66px, rgba(1, 1, 1, 0.19) 69px), linear-gradient(90deg, rgb(239, 53, 115), rgb(79, 2, 93));
+    }
+}
+
+#mapCanvas,
+#liveMapCanvas {
+    height: 400px;
+    width: auto;
+}
+
+.reports-vehicle-registration-plate,
+.reports-driver-name {
+    width: 300px;
+}
+
+.reports-date-time {
+    width: 265px;
+}
+
+#reportsVehicleDistanceTraveled,
+#reportsDriverDistanceTraveled {
+    font-size: 15px;
+    color: #4CAF50;
+}
+
+.bd-callout {
+    padding: 1.25rem;
+    margin-top: 1.25rem;
+    margin-bottom: 2.25rem;
+    border-left: 3px solid #5bc0de;
+    border-left-width: .25rem;
+    border-radius: .5rem;
+}
+
+.form {
+    width: 400px;
+}
+
+.expire-alert {
+    color: #FF0000;
+}
+
+.table-header {
+    background-color: #82cfe5
+}
+
+
+/* Clip Path Transition card */
+.card-inner {
+    background: rgb(9, 201, 153);
+    padding: 12px;
+    border-radius: 10px;
+    width: 270px;
+    clip-path: circle(10% at 87% 17%);
+    transition: all .5s ease-in-out;
+    cursor: pointer;
+    float: right;
+}
+
+.card-inner:hover {
+    clip-path: circle(75%);
+    background: #00B6FF;
+}
+
+.card-inner h4 {
+    color: #001f3f;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.card-inner p {
+    color: white;
+    font-size: 12px;
+}
+
+.card-inner span {
+    float: right;
+    color: white;
+    font-weight: bold;
+    transition: color .5s;
+    position: relative;
+    margin-right: 4%;
+}
+
+.card-inner:hover span {
+    color: rgba(255, 255, 255, 0)
+}
+
+.card-inner-joke {
+    clip-path: circle(10% at 87% 25%);
+}
+
+.card-inner-joke p {
+    font-size: 13px;
+}

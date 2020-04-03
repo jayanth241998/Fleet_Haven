@@ -1,0 +1,45 @@
+{
+  "name": "fleet-management",
+  "version": "1.0.6",
+  "author": "Andrei Ulinici",
+  "private": true,
+  "license": "MIT",
+  "description": "Fleet Management website",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/andreiulinici/fleet-management.git"
+  },
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "engines": {
+    "npm": "latest",
+    "node": "latest"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.8.3",
+    "babel-runtime": "^6.26.0",
+    "bcryptjs": "latest",
+    "body-parser": "latest",
+    "connect-flash": "latest",
+    "cookie-parser": "latest",
+    "cors": "latest",
+    "express": "latest",
+    "express-handlebars": "3.1.0",
+    "express-messages": "latest",
+    "express-session": "latest",
+    "express-validator": "^5.3.1",
+    "gpx-builder": "^2.2.0",
+    "handlebars": "^4.2.0",
+    "helmet": "3.21.1",
+    "mongodb": "latest",
+    "mongoose": "latest",
+    "nodemailer": "^6.3.0",
+    "passport": "latest",
+    "passport-http": "latest",
+    "passport-local": "latest"
+  },
+  "devDependencies": {}
+}
