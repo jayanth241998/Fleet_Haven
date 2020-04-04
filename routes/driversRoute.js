@@ -63,6 +63,7 @@ router.post('/create', function (req, res) {
         nationalId: req.body.nationalId,
         address: req.body.address,
         email: req.body.email,
+        password: req.body.password,
         phoneNumber: req.body.phoneNumber,
         distanceTraveled: 0,
         license: [{ category: req.body.category1, expiryDate: req.body.expiryDate1 }]
