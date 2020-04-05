@@ -16,7 +16,36 @@ router.get('/', ensureAuthenticated, function (req, res) {
 				}
 			}
 		}
-		res.render('index', { items: userTrips });
+
+
+		//for drivers
+		Driver.find({}).exec().then((drivers) => {
+            var userDrivers = [];
+            for (var i = 0; i < drivers.length; i++) {
+                var totalDistanceTraveled = 0;
+                // Get drivers and vehicles of the logged in user
+                if (drivers[i].userId == usersRoute.userId) {
+                    for (var j = 0; j < vehicles.length; j++) {
+                        if (vehicles[j].userId == usersRoute.userId) {
+                            for (var k = 0; k < vehicles[j].trips.length; k++) {
+                                if (vehicles[j].trips[k].driver.nationalId == drivers[i].nationalId) {
+                                    totalDistanceTraveled += vehicles[j].trips[k].distance;
+                                }
+                            }
+                        }
+                    }
+                    if (totalDistanceTraveled != drivers[i].distanceTraveled) {
+                        Driver.findOneAndUpdate({ nationalId: drivers[i].nationalId }, { $set: { distanceTraveled: totalDistanceTraveled } }, { upsert: true }).exec();
+                    }
+                    userDrivers.push(drivers[i]);
+                }
+			}
+			res.render('index', { items: userTrips, driver: userDrivers });
+		}).catch((err) => {
+			req.flash('error_msg', err);
+			res.redirect('/');
+		})
+		
 	}).catch((err) => {
 		req.flash('error_msg', err);
 		res.redirect('/');
