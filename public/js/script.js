@@ -27,7 +27,7 @@ $(document).ready(function() {
     window.setRoutes = setRoutes;
     
     // called on body load
-    function initialize() {
+    function initialize(index = "") {
     
         // initialize infoWindow
         infoWindow = new google.maps.InfoWindow({
@@ -37,7 +37,7 @@ $(document).ready(function() {
             // max zoom
             zoom: 18
         };
-        map = new google.maps.Map(document.getElementById("map_canvas"), options);
+        var map = new google.maps.Map(document.getElementById("map_canvas"+index), options);
         //
         // initial location which loads up on map
         address = 'Bangalore'
@@ -94,7 +94,7 @@ $(document).ready(function() {
     
     // Using Directions Service find the route between the starting and ending points
     function setRoutes(startVal,endVal) {
-        map && initialize();
+        map 
         // empty out the error msg
         toggleError("");
         // set the values and check if any is empty, and if yes, show error and return

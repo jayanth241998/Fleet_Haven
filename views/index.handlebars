@@ -117,20 +117,18 @@
                                 </div>
 
                             </div>
-                                <div style="height: 400px" id="map_canvas"></div>                       
+                            {{#each items}}
+                            <div class="row">
+                                <div class="col-xs-6">
+                                <div style="height: 400px" id="map_canvas{{inc @index}}"></div>                       
                                 <script>
                                     jQuery(document).ready(function($) {
-                                        initialize();
+                                        initialize({{inc @index}});
+                                        setRoutes('{{this.startLocation}}','{{this.stopLocation}}')
                                     });
                                 </script>
-                                <div class="row">
-                                    {{#each items}}
-                                        <script>
-                                            jQuery(document).ready(function($) {
-                                                setRoutes('{{this.startLocation}}','{{this.stopLocation}}')
-                                         });
-                                        </script>
-                                {{/each}}
+                                </div>
+                            {{/each}}
                             </div>
                         </div>
                     </div>
