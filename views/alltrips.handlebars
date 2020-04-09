@@ -20,6 +20,7 @@
                 <th>Stop location</th>
                 <th>Trip distance</th>
                 <th>Trips</th>
+                <th>Invoice</th>
             </tr>
         </thead>
         <tbody>
@@ -46,6 +47,14 @@
                             <span class="glyphicon glyphicon-road"></span>
                         </button>
                     </p>
+                </td>
+                <td data-label="Invoice">
+                  <p class="operations" title="Generate Invoice">
+                      <button class="btn btn-success btn-md"
+                          onclick="generate_cutomPDF()">
+                          <span class="glyphicon glyphicon-file"></span>
+                      </button>
+                  </p>
                 </td>
             </tr>
             {{/each}}
