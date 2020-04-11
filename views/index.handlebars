@@ -120,7 +120,8 @@
                             {{#each items}}
                             <div class="row">
                                 <div class="col-xs-6">
-                                <div style="height: 400px" id="map_canvas{{inc @index}}"></div>                       
+                                <div style="height: 400px" id="map_canvas{{inc @index}}"></div>  
+                                <script src="/js/script.js"></script>                     
                                 <script>
                                     jQuery(document).ready(function($) {
                                         initialize({{inc @index}});

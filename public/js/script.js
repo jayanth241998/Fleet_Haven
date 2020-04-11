@@ -37,7 +37,7 @@ $(document).ready(function() {
             // max zoom
             zoom: 18
         };
-        var map = new google.maps.Map(document.getElementById("map_canvas"+index), options);
+        map = new google.maps.Map(document.getElementById("map_canvas"+index), options);
         //
         // initial location which loads up on map
         address = 'Bangalore'

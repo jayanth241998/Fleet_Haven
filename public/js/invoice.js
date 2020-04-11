@@ -29,14 +29,14 @@ function generate() {
 var comapnyJSON={
   CompanyName:'Fleet Haven',
   CompanyGSTIN:'37B76C238B7E1Z5',
-  CompanyState:'KERALA (09)',
+  CompanyState:'KARNATAKA',
   CompanyPAN:'B76C238B7E',
   CompanyAddressLine1:'ABCDEFGD HOUSE,IX/642-D',
-  CompanyAddressLine2:'ABCDEFGD P.O., NEDUMBASSERY',
-  CompanyAddressLine3:'COCHIN',
-  PIN: '683584',
+  CompanyAddressLine2:'ABCDEFGD P.O., YELAHANKA',
+  CompanyAddressLine3:'BENGALURU',
+  PIN: '560091',
   companyEmail:'xyz@gmail.com',
-  companyPhno:'+918189457845',
+  companyPhno:'+911234567890',
 };
 
 var customer_BillingInfoJSON={
@@ -54,13 +54,13 @@ var customer_BillingInfoJSON={
 
 
 var customer_ShippingInfoJSON={
-  CustomerName:'Jino Shaji',
+  CustomerName:'John Wilks',
   CustomerGSTIN:'37B76C238B7E1Z5',
-  CustomerState:'KERALA (09)',
+  CustomerState:'KARNATAKA',
   CustomerPAN:'B76C238B7E',
   CustomerAddressLine1:'ABCDEFGD HOUSE,IX/642-D',
-  CustomerAddressLine2:'ABCDEFGD P.O., NEDUMBASSERY',
-  CustomerAddressLine3:'COCHIN',
+  CustomerAddressLine2:'ABCDEFGD P.O., YELAHANKA',
+  CustomerAddressLine3:'BENGALURU',
   PIN: '683584',
   CustomerEmail:'abcd@gmail.com',
   CustomerPhno:'+918189457845',
@@ -69,7 +69,7 @@ var customer_ShippingInfoJSON={
 
 var invoiceJSON={
   InvoiceNo:'INV-120152',
-  InvoiceDate:'03-12-2017',
+  InvoiceDate:'03-12-2019',
   RefNo:'REF-78445',
   TotalAmnt:'Rs.1,24,200',
   SubTotalAmnt:'Rs.1,04,200',
